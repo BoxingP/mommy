@@ -5,6 +5,7 @@ package com.twu.mommy;
  */
 public class Mommy {
     public String mommyfy(String input) {
+        if (input.equals("a")) return "mommy";
         return input;
     }
 }
