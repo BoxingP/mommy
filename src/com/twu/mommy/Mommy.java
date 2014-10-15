@@ -5,6 +5,6 @@ package com.twu.mommy;
  */
 public class Mommy {
     public String mommyfy(String input) {
-        return "";
+        return input;
     }
 }

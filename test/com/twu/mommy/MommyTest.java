@@ -14,4 +14,10 @@ public class MommyTest {
         Mommy mommy = new Mommy();
         assertThat(mommy.mommyfy(""), is(""));
     }
+
+    @Test
+    public void shouldReturnStrWhenInputIsStr() {
+        Mommy mommy = new Mommy();
+        assertThat(mommy.mommyfy("str"), is("str"));
+    }
 }
