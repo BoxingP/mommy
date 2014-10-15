@@ -1,11 +1,17 @@
 package com.twu.mommy;
 
-/**
- * Created by bxpeng on 10/15/14.
- */
 public class Mommy {
     public String mommyfy(String input) {
-        if (input.equals("a") || input.equals("aa")) return "mommy";
-        return input;
+        StringBuilder sequence = new StringBuilder();
+
+        for (int index = 0; index < input.length(); index++) {
+            if (input.charAt(index) != 'a') {
+                sequence.append(input.charAt(index));
+            }
+            if (input.charAt(index) == 'a' && (index == 0 || input.charAt(index - 1) != 'a')) {
+                sequence.append("mommy");
+            }
+        }
+        return sequence.toString();
     }
 }

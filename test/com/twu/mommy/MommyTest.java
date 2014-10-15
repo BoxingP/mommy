@@ -5,9 +5,6 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by bxpeng on 10/15/14.
- */
 public class MommyTest {
     @Test
     public void shouldReturnEmptyWhenInputIsEmpty() {
@@ -32,4 +29,11 @@ public class MommyTest {
         Mommy mommy = new Mommy();
         assertThat(mommy.mommyfy("aa"), is("mommy"));
     }
+
+    @Test
+    public void shouldReturnCmommyrWhenInputIsCar() {
+        Mommy mommy = new Mommy();
+        assertThat(mommy.mommyfy("car"), is("cmommyr"));
+    }
+
 }
