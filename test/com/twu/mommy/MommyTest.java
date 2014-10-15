@@ -26,4 +26,10 @@ public class MommyTest {
         Mommy mommy = new Mommy();
         assertThat(mommy.mommyfy("a"), is("mommy"));
     }
+
+    @Test
+    public void shouldReturnMommyWhenInputIsAa() {
+        Mommy mommy = new Mommy();
+        assertThat(mommy.mommyfy("aa"), is("mommy"));
+    }
 }
