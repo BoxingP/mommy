@@ -5,13 +5,25 @@ public class Mommy {
         StringBuilder sequence = new StringBuilder();
 
         for (int index = 0; index < input.length(); index++) {
-            if (input.charAt(index) != 'a') {
+            String currentLetter = Character.toString(input.charAt(index));
+
+            if (!isExpectedLetter(currentLetter)) {
                 sequence.append(input.charAt(index));
             }
-            if (input.charAt(index) == 'a' && (index == 0 || input.charAt(index - 1) != 'a')) {
+            if ((isExpectedLetter(currentLetter)) && (isPreviousLetterValid(input, index))) {
                 sequence.append("mommy");
             }
+
         }
         return sequence.toString();
+    }
+
+    private boolean isPreviousLetterValid(String input, int index) {
+        if (index==0) return true;
+        if (!isExpectedLetter(Character.toString(input.charAt(index - 1)))) return true;
+        return false;
+    }
+    private boolean isExpectedLetter(String letter) {
+        return letter.matches("[aeou]+");
     }
 }
