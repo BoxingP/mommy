@@ -47,4 +47,9 @@ public class MommyTest {
     public void shouldReturnStringWhenInputIsStrign() {
         assertThat(mommy.mommyfy("string"), is("string"));
     }
+
+    @Test
+    public void shouldReturnBlmommyWhenInputIsBlA() {
+        assertThat(mommy.mommyfy("blA"), is("blmommy"));
+    }
 }

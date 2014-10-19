@@ -31,7 +31,7 @@ public class Mommy {
     }
 
     private boolean isExpectedLetter(String letter) {
-        return letter.matches("[aeiou]+");
+        return letter.matches("[aeiouAEIOU]+");
     }
 
     private boolean isEnough(String input) {
