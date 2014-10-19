@@ -42,4 +42,9 @@ public class MommyTest {
     public void shouldReturnHmommysmommyWhenInputIsHouse() {
         assertThat(mommy.mommyfy("house"), is("hmommysmommy"));
     }
+
+    @Test
+    public void shouldReturnStringWhenInputIsStrign() {
+        assertThat(mommy.mommyfy("string"), is("string"));
+    }
 }
