@@ -11,30 +11,29 @@ public class Mommy {
         for (int index = 0; index < input.length(); index++) {
             String currentLetter = Character.toString(input.charAt(index));
 
-            sequence = !isExpectedLetter(currentLetter) ? sequence.append(currentLetter) : replaceLetter(input, index);
+            sequence = !isVowel(currentLetter) ? sequence.append(currentLetter) : replaceLetterByMommy(input, index);
         }
-        return isEnough(input) ? sequence.toString() : input;
+        return isBeyondThirtyPercent(input) ? sequence.toString() : input;
     }
 
-    private StringBuilder replaceLetter(String input, int index) {
+    private StringBuilder replaceLetterByMommy(String input, int index) {
         count++;
-        if (isPreviousLetterValid(input, index)) {
+        if (!isPreviousLetterVowel(input, index)) {
             sequence.append("mommy");
         }
         return sequence;
     }
 
-    private boolean isPreviousLetterValid(String input, int index) {
-        if (index == 0) return true;
-        if (!isExpectedLetter(Character.toString(input.charAt(index - 1)))) return true;
+    private boolean isPreviousLetterVowel(String input, int index) {
+        if (index != 0 && isVowel(Character.toString(input.charAt(index - 1)))) return true;
         return false;
     }
 
-    private boolean isExpectedLetter(String letter) {
+    private boolean isVowel(String letter) {
         return letter.matches("[aeiouAEIOU]+");
     }
 
-    private boolean isEnough(String input) {
+    private boolean isBeyondThirtyPercent(String input) {
         return input.length() != 0 && count / input.length() > 0.3;
     }
 }
