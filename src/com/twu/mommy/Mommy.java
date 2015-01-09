@@ -1,32 +1,27 @@
 package com.twu.mommy;
 
 public class Mommy {
-    private StringBuilder sequence;
-    private double count;
 
     public String mommyfy(String input) {
-        sequence = new StringBuilder();
-        count = 0;
+        if (!isBeyondThirtyPercent(input)) return input;
 
-        for (int index = 0; index < input.length(); index++) {
+        StringBuilder output = new StringBuilder();
+        int index = 0;
+        while (index < input.length()) {
             String currentLetter = Character.toString(input.charAt(index));
 
-            sequence = !isVowel(currentLetter) ? sequence.append(currentLetter) : replaceLetterByMommy(input, index);
+            output.append(!isVowel(currentLetter) ? currentLetter : replaceLetterByMommy(input, index));
+            index++;
         }
-        return isBeyondThirtyPercent(input) ? sequence.toString() : input;
+        return  output.toString();
     }
 
-    private StringBuilder replaceLetterByMommy(String input, int index) {
-        count++;
-        if (!isPreviousLetterVowel(input, index)) {
-            sequence.append("mommy");
-        }
-        return sequence;
+    private String replaceLetterByMommy(String input, int index) {
+        return !isPreviousLetterVowel(input, index) ? "mommy" : "";
     }
 
     private boolean isPreviousLetterVowel(String input, int index) {
-        if (index != 0 && isVowel(Character.toString(input.charAt(index - 1)))) return true;
-        return false;
+        return  index != 0 && isVowel(Character.toString(input.charAt(index - 1)));
     }
 
     private boolean isVowel(String letter) {
@@ -34,6 +29,11 @@ public class Mommy {
     }
 
     private boolean isBeyondThirtyPercent(String input) {
-        return input.length() != 0 && count / input.length() > 0.3;
+        int count = 0;
+        for (int index = 0; index < input.length(); index++) {
+            if (Character.toString(input.charAt(index)).matches("[aeiouAEIOU]+")) count++;
+        }
+
+        return  (double) count / input.length() > 0.3;
     }
 }
